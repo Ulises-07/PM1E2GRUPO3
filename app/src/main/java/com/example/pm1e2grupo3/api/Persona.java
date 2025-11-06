@@ -1,10 +1,12 @@
 package com.example.pm1e2grupo3.api;
 
-import java.io.Serializable;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
-public class Persona implements Serializable{
-    // Nota: El JSON de tu API GetPersons.php usa minúsculas
+// Implementamos Serializable para poder pasar el objeto entre Activities
+public class Persona implements Serializable {
+
+    // Los nombres deben coincidir con los campos de la tabla/JSON
     @SerializedName("id")
     private String id;
 
@@ -21,20 +23,10 @@ public class Persona implements Serializable{
     private String longitud;
 
     @SerializedName("video")
-    private String video;
+    private String video; // Guardaremos la ruta o nombre del video
 
-    // Constructor para crear
+    // Constructor (opcional, pero útil)
     public Persona(String nombre, String telefono, String latitud, String longitud, String video) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.latitud = latitud;
-        this.longitud = longitud;
-        this.video = video;
-    }
-
-    // Constructor para actualizar (incluye id)
-    public Persona(String id, String nombre, String telefono, String latitud, String longitud, String video) {
-        this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.latitud = latitud;
@@ -49,4 +41,12 @@ public class Persona implements Serializable{
     public String getLatitud() { return latitud; }
     public String getLongitud() { return longitud; }
     public String getVideo() { return video; }
+
+    // Setters (útiles para la actualización)
+    public void setId(String id) { this.id = id; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public void setLatitud(String latitud) { this.latitud = latitud; }
+    public void setLongitud(String longitud) { this.longitud = longitud; }
+    public void setVideo(String video) { this.video = video; }
 }

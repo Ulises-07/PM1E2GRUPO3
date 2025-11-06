@@ -29,6 +29,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    buildFeatures {
+        viewBinding; true
+    }
 }
 
 dependencies {
@@ -41,16 +45,15 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+    // Retrofit (para conectar a la API de PHP)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
-    implementation("com.google.android.gms:play-services-maps:18.2.0")
-    implementation("com.google.android.gms:play-services-location:21.2.0")
-
+// RecyclerView y CardView (para la lista de contactos)
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-
-    implementation("androidx.activity:activity-ktx:1.9.0")
-    implementation("androidx.fragment:fragment-ktx:1.7.1")
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.cardview:cardview:1.0.0")
+// Google Maps
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+// Proveedor de localización
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 
 }
