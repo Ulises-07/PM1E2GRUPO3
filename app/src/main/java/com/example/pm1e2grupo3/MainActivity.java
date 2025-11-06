@@ -202,10 +202,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (videoPath.isEmpty()) {
-            Toast.makeText(this, "Debe tomar un video", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        if (videoPath.isEmpty()) {
+//            Toast.makeText(this, "Debe tomar un video", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
         // Creamos el objeto Persona
         Persona persona = new Persona(nombre, telefono, latitud, longitud, videoPath);

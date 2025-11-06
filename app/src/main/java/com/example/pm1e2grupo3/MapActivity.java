@@ -12,7 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.pm1e2grupo3.databinding.ActivityMapBinding;
+//import com.example.pm1e2grupo3.databinding.ActivityMapBinding;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
