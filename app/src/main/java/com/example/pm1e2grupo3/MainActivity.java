@@ -184,9 +184,9 @@ public class MainActivity extends AppCompatActivity {
             }
             if (allGranted) {
                 dispatchTakeVideoIntent();
-            } else {
-                Toast.makeText(this, "Permisos de cámara o almacenamiento denegados.", Toast.LENGTH_SHORT).show();
-            }
+            } //else {
+                //Toast.makeText(this, "Permisos de cámara o almacenamiento denegados.", Toast.LENGTH_SHORT).show();
+            //}
         }
     }
 
@@ -201,10 +201,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-//        if (videoPath.isEmpty()) {
-//            Toast.makeText(this, "Debe tomar un video", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        if (videoPath.isEmpty()) {
+            Toast.makeText(this, "Debe tomar un video", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Persona persona = new Persona(nombre, telefono, latitud, longitud, videoPath);
 
