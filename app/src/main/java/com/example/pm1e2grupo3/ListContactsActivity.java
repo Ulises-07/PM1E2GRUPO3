@@ -57,7 +57,6 @@ public class ListContactsActivity extends AppCompatActivity implements ContactAd
     @Override
     protected void onResume() {
         super.onResume();
-        // Cargar contactos cada vez que la actividad se vuelve visible
         loadContacts();
     }
 
@@ -91,10 +90,8 @@ public class ListContactsActivity extends AppCompatActivity implements ContactAd
             @Override
             public void onResponse(Call<List<Persona>> call, Response<List<Persona>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    // contactList.clear();
-                    // contactList.addAll(response.body());
-                    // adapter.notifyDataSetChanged();
-                    adapter.updateListFull(response.body()); // Usar el método del adapter
+
+                    adapter.updateListFull(response.body());
                     Log.i("API_SUCCESS", "Contactos cargados: " + response.body().size());
                 } else {
                     Toast.makeText(ListContactsActivity.this, "No se encontraron contactos.", Toast.LENGTH_SHORT).show();
@@ -113,7 +110,6 @@ public class ListContactsActivity extends AppCompatActivity implements ContactAd
     @Override
     public void onItemClick(Persona persona) {
         selectedPersona = persona;
-        // Mostrar diálogo para ir al mapa
         showMapDialog(persona);
     }
 
@@ -129,7 +125,6 @@ public class ListContactsActivity extends AppCompatActivity implements ContactAd
                     startActivity(intent);
                 })
                 .setNegativeButton("No", (dialog, which) -> {
-                    // Si dice "No", mantenemos la selección para Eliminar/Actualizar
                     dialog.dismiss();
                 })
                 .show();
@@ -145,16 +140,15 @@ public class ListContactsActivity extends AppCompatActivity implements ContactAd
                 .setTitle("Eliminar Contacto")
                 .setMessage("¿Está seguro que desea eliminar a " + selectedPersona.getNombre() + "?")
                 .setPositiveButton("Sí", (dialog, which) -> {
-                    // Llamada a la API para eliminar
                     PersonaApi personaApi = RetrofitClient.getClient().create(PersonaApi.class);
-                    Call<Void> call = personaApi.deletePerson(selectedPersona); // Enviamos el objeto con el ID
+                    Call<Void> call = personaApi.deletePerson(selectedPersona);
 
                     call.enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if (response.isSuccessful()) {
                                 Toast.makeText(ListContactsActivity.this, "Contacto eliminado", Toast.LENGTH_SHORT).show();
-                                loadContacts(); // Recargar lista
+                                loadContacts();
                                 selectedPersona = null;
                                 adapter.clearSelection();
                             } else {
@@ -181,7 +175,7 @@ public class ListContactsActivity extends AppCompatActivity implements ContactAd
         }
 
         Intent intent = new Intent(this, UpdateActivity.class);
-        intent.putExtra("CONTACTO_A_ACTUALIZAR", selectedPersona); // Pasamos el objeto entero
+        intent.putExtra("CONTACTO_A_ACTUALIZAR", selectedPersona);
         startActivityForResult(intent, UPDATE_REQUEST_CODE);
     }
 
@@ -189,9 +183,8 @@ public class ListContactsActivity extends AppCompatActivity implements ContactAd
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == UPDATE_REQUEST_CODE && resultCode == RESULT_OK) {
-            // El contacto fue actualizado, recargamos la lista
             loadContacts();
-            selectedPersona = null; // Limpiar selección
+            selectedPersona = null;
             adapter.clearSelection();
         }
     }

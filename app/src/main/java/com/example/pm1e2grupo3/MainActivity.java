@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // Pedir permisos de localización
         checkLocationPermission();
 
         btnTomarVideo.setOnClickListener(v -> checkCameraPermission());
@@ -207,10 +206,8 @@ public class MainActivity extends AppCompatActivity {
 //            return;
 //        }
 
-        // Creamos el objeto Persona
         Persona persona = new Persona(nombre, telefono, latitud, longitud, videoPath);
 
-        // Obtenemos el servicio de la API
         PersonaApi personaApi = RetrofitClient.getClient().create(PersonaApi.class);
         Call<Void> call = personaApi.createPerson(persona);
 
@@ -237,11 +234,11 @@ public class MainActivity extends AppCompatActivity {
     private void limpiarCampos() {
         txtNombre.setText("");
         txtTelefono.setText("");
+        txtLatitud.setText("");
+        txtLongitud.setText("");
         videoPath = "";
         imgVideoPlaceholder.setVisibility(View.VISIBLE);
         videoView.setVisibility(View.GONE);
         videoView.stopPlayback();
-        // Mantenemos la última ubicación
-        // getLastLocation();
     }
 }

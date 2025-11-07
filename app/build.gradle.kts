@@ -45,15 +45,14 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    // Retrofit (para conectar a la API de PHP)
+
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-// RecyclerView y CardView (para la lista de contactos)
+
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
-// Google Maps
+
     implementation("com.google.android.gms:play-services-maps:18.2.0")
-// Proveedor de localización
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
 }

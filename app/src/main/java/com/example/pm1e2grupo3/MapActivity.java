@@ -12,7 +12,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-//import com.example.pm1e2grupo3.databinding.ActivityMapBinding;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -26,7 +25,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        // Obtener los datos pasados desde ListContactsActivity
         Intent intent = getIntent();
         try {
             latitud = Double.parseDouble(intent.getStringExtra("latitud"));
@@ -38,7 +36,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             return;
         }
 
-        // Obtener el SupportMapFragment y notificar cuando el mapa esté listo
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         if (mapFragment != null) {
@@ -46,25 +43,18 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
     }
 
-    /**
-     * Se llama cuando el mapa está listo para usarse.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Crear objeto LatLng con las coordenadas
         LatLng ubicacion = new LatLng(latitud, longitud);
 
-        // Añadir un marcador en la ubicación
         mMap.addMarker(new MarkerOptions()
                 .position(ubicacion)
                 .title("Ubicación de " + nombre));
 
-        // Mover la cámara al marcador y hacer zoom
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f)); // Zoom de 15
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 15f));
 
-        // Opcional: Habilitar controles de zoom
         mMap.getUiSettings().setZoomControlsEnabled(true);
     }
 }

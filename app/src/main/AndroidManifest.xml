@@ -2,12 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pm1e2grupo3">
-    <!-- Asegúrate que este sea tu nombre de paquete -->
-    <!-- Permisos -->
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CAMERA" /> <!-- El permiso READ_EXTERNAL_STORAGE ya no es necesario para la mayoría de los casos en APIs recientes -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -29,12 +28,10 @@
             android:exported="false" />
         <activity
             android:name=".UpdateActivity"
-            android:exported="false" /> <!-- Añadido para forzar la fusión y evitar conflictos -->
-        <!-- La línea <tools:targetApi="31"> se eliminó de aquí porque era incorrecta -->
-        <!-- API KEY DE GOOGLE MAPS -->
+            android:exported="false" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAe-TG4RAZLWXI7xsbnhr6-Chk8muZp26c" /> <!-- Pantalla 1: Crear Contacto (la principal) -->
+            android:value="AIzaSyAe-TG4RAZLWXI7xsbnhr6-Chk8muZp26c" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -43,8 +40,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Otras Activities -->
-        <activity android:name=".ListContactsActivity" /> <!-- Proveedor de archivos (para la foto/video) -->
+        </activity>
+        <activity android:name=".ListContactsActivity" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

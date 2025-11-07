@@ -33,7 +33,6 @@ public class UpdateActivity extends AppCompatActivity {
         btnGuardar = findViewById(R.id.btnGuardarActualizacion);
         btnCancelar = findViewById(R.id.btnCancelarActualizacion);
 
-        // Recibir el objeto Persona de la actividad anterior
         Intent intent = getIntent();
         if (intent.hasExtra("CONTACTO_A_ACTUALIZAR")) {
             persona = (Persona) intent.getSerializableExtra("CONTACTO_A_ACTUALIZAR");
@@ -63,10 +62,8 @@ public class UpdateActivity extends AppCompatActivity {
             return;
         }
 
-        // Actualizar el objeto persona
         persona.setNombre(nombre);
         persona.setTelefono(telefono);
-        // Los demás campos (id, lat, lon, video) ya están en el objeto 'persona'
 
         PersonaApi personaApi = RetrofitClient.getClient().create(PersonaApi.class);
         Call<Void> call = personaApi.updatePerson(persona);
@@ -76,7 +73,7 @@ public class UpdateActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(UpdateActivity.this, "Contacto actualizado", Toast.LENGTH_SHORT).show();
-                    setResult(RESULT_OK); // Indicar a ListContactsActivity que se actualizó
+                    setResult(RESULT_OK);
                     finish();
                 } else {
                     Toast.makeText(UpdateActivity.this, "Error al actualizar", Toast.LENGTH_SHORT).show();

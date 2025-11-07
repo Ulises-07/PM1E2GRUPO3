@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> implements Filterable {
 
     private List<Persona> contactList;
-    private List<Persona> contactListFull; // Lista original para el filtro
+    private List<Persona> contactListFull;
     private Context context;
     private OnItemClickListener listener;
     private int selectedPosition = RecyclerView.NO_POSITION;
@@ -28,7 +28,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public ContactAdapter(Context context, List<Persona> contactList, OnItemClickListener listener) {
         this.context = context;
         this.contactList = contactList;
-        this.contactListFull = new ArrayList<>(contactList); // Copia de la lista
+        this.contactListFull = new ArrayList<>(contactList);
         this.listener = listener;
     }
 
@@ -45,7 +45,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         holder.txtNombre.setText(persona.getNombre());
         holder.txtTelefono.setText(persona.getTelefono());
 
-        // Resaltar item seleccionado
+
         if (selectedPosition == position) {
             holder.itemLayout.setBackgroundColor(Color.LTGRAY);
         } else {
@@ -53,9 +53,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         }
 
         holder.itemView.setOnClickListener(v -> {
-            notifyItemChanged(selectedPosition); // Deseleccionar el anterior
+            notifyItemChanged(selectedPosition);
             selectedPosition = holder.getAdapterPosition();
-            notifyItemChanged(selectedPosition); // Seleccionar el nuevo
+            notifyItemChanged(selectedPosition);
             listener.onItemClick(persona);
         });
     }
@@ -65,7 +65,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         return contactList.size();
     }
 
-    // Para el filtro de búsqueda
+
     @Override
     public Filter getFilter() {
         return contactFilter;
@@ -99,7 +99,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         }
     };
 
-    // Método para actualizar la lista completa (cuando se carga desde la API)
+
     public void updateListFull(List<Persona> newList) {
         contactListFull.clear();
         contactListFull.addAll(newList);
@@ -129,7 +129,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         }
     }
 
-    // Interfaz para el click
     public interface OnItemClickListener {
         void onItemClick(Persona persona);
     }
