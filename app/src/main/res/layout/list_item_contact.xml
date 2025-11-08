@@ -21,8 +21,6 @@
             android:layout_marginEnd="16dp"
             android:src="@drawable/rounded_accessibility_24"
             app:tint="@color/design_default_color_secondary_variant" />
-        <!-- Necesitarás un ícono 'ic_contact_person' en res/drawable -->
-        <!-- Puedes usar el ícono de 'person' de los Vector Assets de Android Studio -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -45,6 +43,21 @@
                 android:layout_height="wrap_content"
                 android:text="9999-9999"
                 android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnVerVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Video"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#00BCD4"
+                android:textColor="@android:color/white"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_gravity="center_vertical"/>
+
         </LinearLayout>
 
     </LinearLayout>

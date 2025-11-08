@@ -45,8 +45,6 @@
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Latitud, Longitud y Video no son editables según el PHP, pero se deben enviar -->
-    <!-- Los mantendremos ocultos o deshabilitados -->
 
     <Button
         android:id="@+id/btnGuardarActualizacion"
